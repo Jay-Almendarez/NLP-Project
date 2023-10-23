@@ -7,6 +7,9 @@ import re
 import pandas as pd
 from env import github_token, github_username
 import unicodedata
+import nltk
+from nltk.tokenize.toktok import ToktokTokenizer
+from nltk.corpus import stopwords
 
 def acquire():
     file_name = 'nlp_repos.csv'
@@ -80,5 +83,34 @@ def acquire():
 
         df.title = df.title.str.lower()
         df.readme = df.readme.str.lower()
-        df.to_csv('nlp_repos.csv')
+        df.to_csv('nlp_repos.csv', index=False)
         return df
+    
+def wrangle():
+    df = acquire()
+    i = 0
+    for read in df.readme:
+        df.readme[i] = df.readme[i][16:]
+        i += 1
+
+    i = 0
+    for read in df.readme:
+        if "\n" in df.readme[i]:
+            df.readme[i] = df.readme[i].replace('\n', ' ')
+        i += 1
+
+    df['lemmatized'] = [clean(readme) for readme in df.readme]
+    return df
+    
+def clean(text):
+    df = acquire()
+    ADDITIONAL_STOPWORDS = ['python', 'java', 'r'] + [ti for ti in df.title]
+    'A simple function to cleanup text data'
+    wnl = nltk.stem.WordNetLemmatizer()
+    stopwords = nltk.corpus.stopwords.words('english') + ADDITIONAL_STOPWORDS
+    text = (unicodedata.normalize('NFKD', text)
+                .encode('ascii', 'ignore')
+                .decode('utf-8', 'ignore')
+                .lower())
+    words = re.sub(r'[^\w\s]', '', text).split()
+    return [wnl.lemmatize(word) for word in words if word not in stopwords]
