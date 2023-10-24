@@ -1,6 +1,7 @@
 # NLP-Project
 Team Project for Natural Language Processing
 ---
+## Slideshow: https://www.canva.com/design/DAFyGuVUN5I/sN2GX_yOhQ40j9Y2Axkm1Q/edit?utm_content=DAFyGuVUN5I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 ## Summary
 ### Initial Goals
 - Discover what genre has most sales globally
