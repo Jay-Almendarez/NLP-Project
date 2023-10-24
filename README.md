@@ -1,39 +1,43 @@
 # NLP-Project
 Team Project for Natural Language Processing
 ---
-## Slideshow: https://www.canva.com/design/DAFyGuVUN5I/sN2GX_yOhQ40j9Y2Axkm1Q/edit?utm_content=DAFyGuVUN5I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
-## Summary
+### Link to Presentation
+https://www.canva.com/design/DAFyGuVUN5I/sN2GX_yOhQ40j9Y2Axkm1Q/edit?utm_content=DAFyGuVUN5I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+---
 ### Initial Goals
-- Discover what genre has most sales globally
-  - Does that follow when we apply regionality?
+- Can we accurately determine the primary coding language used based on only the test in a github readme?
+- Do those key words change when looking at different languages?
+---
 ### Findings
-- Genre selection plays a significant role in both global and regional markets
+- Words like 'api', and 'data' appear more often when the primary language is Python
+- Java and Typescript both have 'use' frequently
+- C has has heavy usage of the word 'component'
+---
 ### Next Steps
-- More regional data should be collected for individualised marketeting strategies
-- Genre selection should be adapted in marketing techniques
+- Perform further ngram analysis to determine if pairings of words further affect predictive strength
+- Apply analysis to more repositories to validate model accuracy
 ---
 ## Project Description
-### Video games have been around for decades now, and they only get more and more popular as time goes on. Consoles, characters, and price may change but one thing has stayed throughout, and it's the stories they tell. Similar to tv and movies, the genre they fall into define the content and usually fans of a genre will flock to new content purely if it is in the same style. As an avid gamer and someone who's seen the power of analysis, I wanted to see if we could determine how well a game might do purely off the genre it belongs to. This project will perform surface level analysis on the insights of genre in 3 different regions of the world as well as a global overview with the hope of conducting more in depth analysis as time progresses.
+### Utilizing classification machine learning algorithms and natural language processing in order to predict programming language using 101 readme files from Github repositories. This project contains acquisition through web scraping using Python, preparation in order to explore, exploratory analysis of the data, statistical testing of categorical variables, and classification modeling to predict language.
 ---
 ## Project Goals
-- Determine best selling genres
-- Apply regionality to observe potential change in sales
+- Predict programming language
+- Apply natural language processing techniques to wrangle and explore data
 ---
 ## Initial Hypotheses
-- I've always had the assumption that the genre 'Shooter' was among the most popular here. Shooter being the colloquial name for a game where your "character" or "avatar" is, well, shooting at something. Whether it's an older game like starfox where you pilot a spaceship fighting opposing ships, or a newer game like Destiny where you control a character's running and jumping from planet to planet fighting "the forces of evil", just about everyone has either played or knows someone who has.
-- Looking to outside regions, my initial assumption was that more modern shooters like the "call of duty" franchise would see a huge falloff outside of North America and we'd see a rise in other genres like racing in Europe and platformers in Japan
+- Our initial assumption is that we would not be able to predict language based off of natural language from readme files with high accuracy.
+- We thought different readme authors would write in unique enough ways to waive any similarities across files.
 ---
 ## Data Dictionary
 | Feature | Definition | 
 | :- | :- |
-| Platform | Console game released on, 0 = Retro, 1 = Home Console, 2 = Handheld |
-| year_of_release | The year the game was released |
-| <font color='red'>Genre</font> | The category of Genre the game falls into, 0 = 'Action', 1 = 'Sports', 2 = 'Misc', 3 = 'RPG', 4 = 'Shooter', 5 = 'Adventure', 6 = 'Racing', 7 = 'Platform', 8 = 'Simulation', 9 = 'Fighting', 10 = 'Strategy', 11 = 'Puzzle' |
-| na_sales | The amount of games sold in North American Region |
-| eu_sales | The amount of games sold in European Region |
-| jp_sales | The amount of games sold in Japanese Region |
-| global_sales | The amount of games sold globally |
+| Title | Name of github repository readme was pulled from |
+| Readme | Content of readme pulled |
+| Lemmatized | Cleaned content of readme |
+| <font color='red'>Language</font> | The Primary language used in readme to be predicted |
+| Encoded columns | Each column indicates if a readme either omits a word (0), or contains it (1) |
 ---
 ## Steps to Reproduce
-- included in this repository is the initial csv before cleaning as well as the cleaned csv to get started
-- a support.py file will contain all the functions used in the final_report
+- Clone the repository
+- Use the wrangle file to acquire and cache the data
+- Reproduce code in project notebook for final results
